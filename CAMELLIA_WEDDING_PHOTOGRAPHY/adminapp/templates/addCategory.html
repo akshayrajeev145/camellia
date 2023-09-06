@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="card">
+        <div class="card-body">
+          <form method="post" action="{% url 'addCategory' %}" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Category Name</label>
+              <input type="text" name="c-name" class="form-control" >
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Category image</label><br>
+                <input type="file" name="c-image" class="form-control" >
+              </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+         
+        </div>
+      </div>
+      <a href="{% url 'Showcategory' %}" style="margin-left: 400px;"> <button  type="submit" class="btn btn-primary">Show Categories</button></a>
+    
+</body>
+</html>
+{% endblock %}

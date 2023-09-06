@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 style="text-align: center;">Add Photos</h1>
+
+    <div class="card">
+        <div class="card-body">
+          <form method="post" action="{% url 'editClientdata' dataid=data.id %}" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Client Name</label>
+              <select class="form-control"  name="cl-name">
+                <option hidden="">{{data.IMGClientName}}</option>
+
+            {% for i in cli %}
+            <option>{{i.ClientName}}</option>
+            {% endfor %}
+
+            </select>
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Image Category</label>
+                <select class="form-control"  name="cl-category">
+                    <option hidden="">{{data.IMGCategoryName}}</option>
+
+                {% for i in cata %}
+                <option>{{i.CategoryName}}</option>
+                {% endfor %}
+
+                </select>
+              </div>
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Image</label><br>
+                <img src="{{data.Images.url}}" alt="error" style=" width: 100px; height: 100px;"><br>
+                <br><input type="file" name="cl-image" class="form-control" >
+              </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+         
+        </div>
+      </div>
+      <a href="{% url 'showPhotos' %}" style="margin-left: 400px;"> <button  type="submit" class="btn btn-primary">Show Clients</button></a>
+
+    
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div >
+        <form action="" enctype="multipart/form-data">
+            <div>
+                <h1 style="text-align: center;">Photo's</h1>
+                <table style="width: 100%;">
+        
+                    <thead>
+                        <tr >
+                        <th>Client Name</th>
+                          <th>Category</th>
+                          <th>Image</th>
+                          <th>Edit</th>
+                          <th>Delete</th>
+                        </tr>
+                        <tbody>
+                            {% for i in data %}
+                            <tr>
+                                <td>{{i.IMGClientName}}</td>
+                                <td> {{i.IMGCategoryName}}</td>
+                                <td> <img src="{{i.Images.url}}" alt="Error" style=" width: 100px; height: 100px; padding: 10px;" ></td>
+                                <td><a href="{% url 'editPhotosPage' dataid=i.id %}" class="btn btn-primary mr-2">Edit</a></td>
+                                <td><a href="{% url 'deleteImageData' dataid=i.id %}" class="btn btn-danger mr-2">Delete</a></td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                            
+                        
+                      </thead>
+                </table>
+              </div>
+        </form>
+      </div>
+
+      <style>
+
+        table, th, td {
+        border: 2px solid black;
+        text-align: center;
+        font-family: 'Times New Roman';
+        font-size: 15px;
+        table-layout: auto;
+        height: 100%;
+        
+        
+
+    }   
+
+        </style>
+    
+</body>
+</html>

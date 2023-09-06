@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="card">
+        <div class="card-body">
+          <form method="post" action="{% url 'addPackkage' %}" enctype="multipart/form-data">
+            {% csrf_token %}
+            <h1>Add Pakage</h1><br><br>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Package Name</label>
+              <input type="text" name="p-name" class="form-control" >
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Package Description</label>
+              <textarea class="form-control" name="p-des" id="" cols="1" rows="3"></textarea>
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Package Price</label>
+              <input type="number" name="p-price" class="form-control" >
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+         
+        </div>
+      </div>
+
+
+    
+</body>
+</html>
+{% endblock %}
